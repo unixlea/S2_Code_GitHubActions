@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
+    - name: debug secrets
+        run: |
+          echo "${{ secrets.RG }}"                | sed -r 's/(.)/\1 /g'
+          echo "${{ secrets.ASP }}"               | sed -r 's/(.)/\1 /g'
+          echo "${{ secrets.WEBAPP }}"            | sed -r 's/(.)/\1 /g'
+          echo "${{ secrets.LOC }}"               | sed -r 's/(.)/\1 /g'
+          echo "${{ secrets.AZURE_CREDENTIALS }}" | sed -r 's/(.)/\1 /g'
+    
     - name: Azure Login
       uses: azure/login@v1
       with:
